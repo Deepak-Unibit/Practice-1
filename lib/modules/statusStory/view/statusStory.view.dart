@@ -20,6 +20,8 @@ class StatusStoryView extends StatelessWidget {
               onPressed: () => RoutesUtil.to(() => StatusStoryPageView()),
               child: StatusView(
                 centerImageUrl: "https://assets.mspimages.in/gear/wp-content/uploads/2023/04/fUNNY-3.jpg",
+                radius: 30,
+                strokeWidth: 2,
                 numberOfStatus: 4,
                 indexOfSeenStatus: 2,
                 padding: 5,
@@ -30,6 +32,8 @@ class StatusStoryView extends StatelessWidget {
               onPressed: () => RoutesUtil.to(() => StatusStoryPageView()),
               child: StatusView(
                 centerImageUrl: "https://assets.mspimages.in/gear/wp-content/uploads/2023/04/fUNNY-3.jpg",
+                radius: 30,
+                strokeWidth: 2,
                 numberOfStatus: 4,
                 indexOfSeenStatus: 2,
                 padding: 5,

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:story_view/story_view.dart';
 import 'package:untitled/modules/statusStoryPage/controller/statusStoryPage.controller.dart';
+import 'package:untitled/utils/routes.util.dart';
 
 class StatusStoryPageView extends StatelessWidget {
   StatusStoryPageView({super.key});
@@ -15,7 +16,9 @@ class StatusStoryPageView extends StatelessWidget {
       body: StoryView(
         controller: statusStoryPageController.storyController,
         indicatorHeight: IndicatorHeight.large,
-        onComplete: () => Get.back(),
+        onComplete: (){
+          Get.back();
+        },
         storyItems: [
           StoryItem.pageVideo(
             "https://news-flick.downlink.in/newsflick-poll-videos/fc3786a8-13ba-4eb3-a51d-8b9910dae6f4.webm",
