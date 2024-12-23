@@ -31,7 +31,7 @@ class StatusStoryView extends StatelessWidget {
             MaterialButton(
               onPressed: () => RoutesUtil.to(() => StatusStoryPageView()),
               child: StatusView(
-                centerImageUrl: "https://assets.mspimages.in/gear/wp-content/uploads/2023/04/fUNNY-3.jpg",
+                centerImageUrl: "https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg",
                 radius: 30,
                 strokeWidth: 2,
                 numberOfStatus: 4,

@@ -71,7 +71,7 @@ class EdeptoOTPController extends GetxController {
         if (count.value > 0) {
           count.value--;
         } else {
-          count.value = 10;
+          // count.value = 10;
           isTimerVisible.value = false;
           cancelTimer();
         }

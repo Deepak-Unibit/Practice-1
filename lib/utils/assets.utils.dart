@@ -18,6 +18,8 @@ class AssetsUtils {
   static getPenguin() => "assets/images/penguin.jpg";
   static getTiger() => "assets/images/tiger.jpg";
   static getNewRibbon() => "assets/images/newImage.png";
+  static getApostropheLeft() => "assets/images/appostropheLeft.png";
+  static getApostropheRight() => "assets/images/aphostropheRight.png";
 
   static getReelsVideo() => "assets/videos/reelsVideo.mp4";
 

@@ -11,7 +11,7 @@ import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
 import 'package:untitled/hiveCustom/user.dart';
 import 'package:untitled/models/news.model.dart';
-import 'package:untitled/modules/statusStory/view/statusStory.view.dart';
+import 'package:untitled/modules/cart/view/cart.view.dart';
 import 'package:untitled/service/notification.service.dart';
 import 'package:untitled/utils/language.util.dart';
 import 'package:untitled/utils/theme.util.dart';
@@ -75,7 +75,7 @@ class MyApp extends StatelessWidget {
       darkTheme: ThemesUtils.dark,
       translations: LanguageUtil(),
       locale: const Locale("hi", "IN"),
-      home: StatusStoryView(),
+      home: CartView(),
       // builder: (context, child) => ResponsiveBreakpoints.builder(
       //   child: ClampingScrollWrapper.builder(context, child!),
       //   breakpoints: [

@@ -3,7 +3,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class CacheNetworkImageHelper {
-  static CachedNetworkImage getImage(String url){
+  static CachedNetworkImage getImage(String url, {BoxFit boxFit = BoxFit.fitHeight}){
     return CachedNetworkImage(
       imageUrl: url,
       placeholder: (context, url) =>
@@ -14,7 +14,7 @@ class CacheNetworkImageHelper {
         decoration: BoxDecoration(
           image: DecorationImage(
             image: imageProvider,
-            fit: BoxFit.fitHeight,
+            fit: boxFit,
           ),
         ),
       ),

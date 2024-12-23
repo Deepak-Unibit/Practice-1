@@ -1,15 +1,15 @@
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_options.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:showcase_tutorial/showcase_tutorial.dart';
-import 'package:untitled/modules/hive/view/hive.view.dart';
 import 'package:untitled/utils/routes.util.dart';
 
 import '../../newsPage/view/newsPage.view.dart';
 
 class NewsHomeController extends GetxController {
-  CarouselController carouselController = CarouselController();
+  CarouselSliderController carouselController = CarouselSliderController();
   RxBool isTourDialogVisible = false.obs;
 
   List<String> hottestTopicsNameList = [

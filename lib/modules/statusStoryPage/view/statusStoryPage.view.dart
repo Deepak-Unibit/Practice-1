@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:story_view/story_view.dart';
 import 'package:untitled/modules/statusStoryPage/controller/statusStoryPage.controller.dart';
-import 'package:untitled/utils/routes.util.dart';
+
+import '../../../utils/routes.util.dart';
 
 class StatusStoryPageView extends StatelessWidget {
   StatusStoryPageView({super.key});
 
-  final StatusStoryPageController statusStoryPageController =
-      StatusStoryPageController();
+  final StatusStoryPageController statusStoryPageController = StatusStoryPageController();
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +18,7 @@ class StatusStoryPageView extends StatelessWidget {
         indicatorHeight: IndicatorHeight.large,
         onComplete: (){
           Get.back();
+          Future.delayed(10.milliseconds, () => RoutesUtil.to(() => StatusStoryPageView()),);
         },
         storyItems: [
           StoryItem.pageVideo(
@@ -25,14 +26,12 @@ class StatusStoryPageView extends StatelessWidget {
             controller: statusStoryPageController.storyController,
           ),
           StoryItem.pageImage(
-            url:
-                "https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg",
+            url: "https://www.simplilearn.com/ice9/free_resources_article_thumb/what_is_image_Processing.jpg",
             controller: statusStoryPageController.storyController,
             imageFit: BoxFit.fitWidth,
           ),
           StoryItem.pageImage(
-            url:
-                "https://assets.mspimages.in/gear/wp-content/uploads/2023/04/fUNNY-3.jpg",
+            url: "https://assets.mspimages.in/gear/wp-content/uploads/2023/04/fUNNY-3.jpg",
             controller: statusStoryPageController.storyController,
             imageFit: BoxFit.fitWidth,
           ),
