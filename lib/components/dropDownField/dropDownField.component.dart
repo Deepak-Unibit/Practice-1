@@ -46,22 +46,17 @@ class DropDownFieldComponent extends StatelessWidget {
       child: DropdownSearch<String>(
         popupProps: PopupProps.menu(
           showSelectedItems: true,
-          itemBuilder: (context, s, isSelected) {
+          itemBuilder: (context, s, isDisabled, isSelected) {
             TextStyle textStyle = isGlobalFontApply
                 ? TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
-                    color: dropdownValue.value == s
-                        ? context.theme.colorScheme.primary
-                        : dropdownTextColor ??
-                            context.theme.colorScheme.onSurfaceVariant,
+                    color: dropdownValue.value == s ? context.theme.colorScheme.primary : dropdownTextColor ?? context.theme.colorScheme.onSurfaceVariant,
                   )
                 : TextStyle(
                     fontSize: 14,
                     fontWeight: FontWeight.w400,
-                    color: dropdownValue.value == s
-                        ? context.theme.colorScheme.primary
-                        : context.theme.colorScheme.onSurfaceVariant,
+                    color: dropdownValue.value == s ? context.theme.colorScheme.primary : context.theme.colorScheme.onSurfaceVariant,
                     fontFamily: s,
                   );
             return ListTile(
@@ -79,40 +74,29 @@ class DropDownFieldComponent extends StatelessWidget {
             );
           },
           menuProps: MenuProps(
-            backgroundColor:
-                fillColor ?? context.theme.colorScheme.surfaceVariant,
+            backgroundColor: fillColor ?? context.theme.colorScheme.surfaceVariant,
           ),
           constraints: BoxConstraints(
             maxHeight: maxHeight,
           ),
         ),
-        dropdownButtonProps: DropdownButtonProps(
-          icon: const Icon(Icons.expand_more_rounded),
-          iconSize: 16,
-          color: borderColor ?? context.theme.colorScheme.onSurfaceVariant,
-          visualDensity: VisualDensity.compact,
-          padding: const EdgeInsets.only(right: 10),
-          alignment: Alignment.centerRight,
-        ),
-        items: items,
+        items: (filter, loadProps) => items,
         onChanged: onChanged,
         selectedItem: dropdownValue.isEmpty ? null : dropdownValue.value,
-        dropdownDecoratorProps: DropDownDecoratorProps(
+        decoratorProps: DropDownDecoratorProps(
           baseStyle: TextStyle(
             fontSize: fontSize,
             fontWeight: FontWeight.w400,
             color: context.theme.colorScheme.onPrimaryContainer,
           ),
-          dropdownSearchDecoration: InputDecoration(
+          decoration: InputDecoration(
             hintText: hintText.tr,
             hintStyle: TextStyle(
               fontSize: 14,
               fontWeight: hintTextFontWeight,
-              color:
-                  hintTextColor ?? context.theme.colorScheme.onSurfaceVariant,
+              color: hintTextColor ?? context.theme.colorScheme.onSurfaceVariant,
             ),
-            contentPadding: EdgeInsets.symmetric(
-                horizontal: horizontalPadding, vertical: verticalPadding),
+            contentPadding: EdgeInsets.symmetric(horizontal: horizontalPadding, vertical: verticalPadding),
             filled: true,
             fillColor: fillColor ?? context.theme.colorScheme.surfaceVariant,
             focusColor: context.theme.colorScheme.primary,

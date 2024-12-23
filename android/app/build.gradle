@@ -31,8 +31,8 @@ android {
     ndkVersion "25.1.8937393"
 
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+        sourceCompatibility '1.8'
+        targetCompatibility '1.8'
     }
 
     kotlinOptions {
@@ -68,7 +68,7 @@ flutter {
 }
 
 dependencies {
-    implementation 'androidx.annotation:annotation:1.8.1'
+    implementation 'androidx.annotation:annotation:1.9.1'
     implementation 'io.flutter:flutter_embedding_debug:1.0.0'
-    implementation 'com.google.firebase:firebase-messaging-ktx:24.0.0'
+    implementation 'com.google.firebase:firebase-messaging-ktx:24.1.0'
 }
