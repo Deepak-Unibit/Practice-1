@@ -23,8 +23,7 @@ class NotificationService {
   NotificationService._internal();
 
   FirebaseMessaging messaging = FirebaseMessaging.instance;
-  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-      FlutterLocalNotificationsPlugin();
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
 
   void requestNotificationPermission() async {
     NotificationSettings settings = await messaging.requestPermission(
@@ -38,13 +37,13 @@ class NotificationService {
     );
 
     if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-      print("User granted permission");
+      Logger().i("User granted permission");
     } else if (settings.authorizationStatus ==
         AuthorizationStatus.provisional) {
-      print("User granted provisional permission");
+      Logger().i("User granted provisional permission");
     } else {
       AppSettings.openAppSettings(type: AppSettingsType.notification);
-      print("User denied permission");
+      Logger().i("User denied permission");
     }
   }
 
@@ -69,13 +68,15 @@ class NotificationService {
 
   void firebaseInit() {
     FirebaseMessaging.onMessage.listen((message) {
-      print(message.notification?.title.toString());
-      print(message.notification?.body.toString());
-      print(message.data);
-      print(message.data['type']);
-      print(message.data['id']);
+      Logger().i(message.notification?.title.toString());
+      Logger().i(message.notification?.body.toString());
+      Logger().i(message.data);
+      Logger().i(message.data['type']);
+      Logger().i(message.data['id']);
 
+      Logger().i("isAndroid: ${Platform.isAndroid}");
       if (Platform.isAndroid) {
+      Logger().i("isAndroid: ${Platform.isAndroid}");
         initLocalNotifications(Get.context!, message);
       }
       showNotification(message);
@@ -120,37 +121,41 @@ class NotificationService {
       iOS: darwinNotificationDetails,
     );
 
+    Logger().i("${message.sentTime}");
+
+
     Future.delayed(
-      0.milliseconds,
+      200.milliseconds,
       () {
+        Logger().i("${message.from}");
         flutterLocalNotificationsPlugin.show(
           0,
           message.notification?.title.toString(),
           message.notification?.body.toString(),
           notificationDetails,
         );
+        Logger().i("${message.data}");
       },
     );
   }
 
-  Future<String> getDeviceToken() async {
-    String? token = await messaging.getToken();
-    return token!;
-  }
-
-  void isTokenRefresh() async {
-    messaging.onTokenRefresh.listen((event) {
-      print("Refresh token: ${event.toString()}");
-    });
-  }
+  // Future<String> getDeviceToken() async {
+  //   String? token = await messaging.getToken();
+  //   return token!;
+  // }
+  //
+  // void isTokenRefresh() async {
+  //   messaging.onTokenRefresh.listen((event) {
+  //     Logger().i("Refresh token: ${event.toString()}");
+  //   });
+  // }
 
   Future<void> setupInteractMessage() async {
     Future.delayed(
-      300.milliseconds,
+      500.milliseconds,
       () async {
         // when app is terminated
-        RemoteMessage? initialMessage =
-            await FirebaseMessaging.instance.getInitialMessage();
+        RemoteMessage? initialMessage = await FirebaseMessaging.instance.getInitialMessage();
 
         if (initialMessage != null) {
           Logger().i("Terminated: $initialMessage");
@@ -168,8 +173,7 @@ class NotificationService {
 
   void handleMessage(BuildContext context, RemoteMessage message) {
     if (message.data["type"] == "message") {
-      RoutesUtil.offAll(() => NewsPageView())
-          .then((value) => RoutesUtil.offAll(() => NewsHomeView()));
+      RoutesUtil.offAll(() => NewsPageView()).then((value) => RoutesUtil.offAll(() => NewsHomeView()));
     }
   }
 }
